@@ -19,6 +19,10 @@ main {
                 background-color: $color-2;
                 border: 10px solid $color-1;
                 border-radius: 15px;
+
+                &.close {
+                    display: none;
+                }
     
                 div.menu--texts {
                     display: flex;
@@ -45,37 +49,59 @@ main {
     
                 div.menu {
                     &--options {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-direction: column;
+                        width: 100%;
 
-                        button {
-                            background-color: $color-3;
-                            width: 100px;
-                            height: 35px;
+                        &.close {
+                            display: none;
+                        }
+
+                        form {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            color: $color-1;
-                            font-family: $font-2;
-                            text-transform: uppercase;
-                            border-radius: 10px;
+                            flex-direction: column;
+
+                            button {
+                                background-color: $color-3;
+                                width: 100px;
+                                height: 35px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: $color-1;
+                                font-family: $font-2;
+                                text-transform: uppercase;
+                                border-radius: 10px;
+        
+                                cursor: pointer;
+                            }
     
-                            cursor: pointer;
-                        }
+                            input {
+                                width: 250px;
+                                height: 40px;
+                                padding: 5px;
+                                background-color: $color-0;
+                                border: 10px;
+    
+                                color: $color-1;
+                                font-size: 10px;
+                                font-family: $font-2;
+                                margin-bottom: 10px;
+                            }
 
-                        input {
-                            width: 250px;
-                            height: 40px;
-                            padding: 5px;
-                            background-color: $color-0;
-                            border: 10px;
-
-                            color: $color-1;
-                            font-size: 10px;
-                            font-family: $font-2;
-                            margin-bottom: 10px;
+                            span.warning {
+                                display: none;
+                                font-size: 8px;
+                                font-weight: 600;
+                                font-stretch: semi-condensed;
+                                color: $color-4;
+                                text-transform: uppercase;
+                                margin-bottom: 10px;
+                                font-family: $font-2;
+                                &.active {
+                                    display: block;
+                                }
+                            }
                         }
                     }
                 }

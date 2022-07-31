@@ -2,9 +2,12 @@ const { src, dest, watch, parallel, series } = require('gulp');
 const rename = require('gulp-rename');
 const minifyJs = require('gulp-uglify');
 const minifyTs = require('gulp-typescript');
+const tsProject = minifyTs.createProject("tsconfig.json", {
+    typescript: require('typescript'),
+});
 const htmlmin = require('gulp-htmlmin');
 const sass = require('gulp-sass')(require('sass'));
-const babel = require('gulp-babel');
+// const babel = require('gulp-babel');
 const webserver = require('gulp-webserver');
 
 function server(){
@@ -46,13 +49,7 @@ function htmlFiles() {
 
 function javaScriptFiles() {
     return src('src/scripts/*.ts')
-        .pipe(minifyTs({
-            noImplicitAny: true
-        }))
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(minifyJs())
+        .pipe(tsProject())
         .pipe(rename({ extname: '.min.js' }))
         .pipe(dest('dist/assets/js/'));
 }

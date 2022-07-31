@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Um jogo para praticar os conceitos de TypeScript, Sass e html",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp"
