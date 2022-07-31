@@ -1,0 +1,85 @@
+@import '../themes/fonts';
+@import '../themes/colors';
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    section{
+        &.menu {
+            &--area{
+                width: 400px;
+                height: 500px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                background-color: $color-2;
+                border: 10px solid $color-1;
+                border-radius: 15px;
+    
+                div.menu--texts {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+    
+                    h1 {
+                        font-family: $font-1;
+                        font-size: 24px;
+                        color: $color-1;
+                        margin-bottom: 10px;
+                        width: 350px;
+                        text-align: center;
+                    }
+        
+                    span {
+                        font-family: $font-2;
+                        font-size: 14px;
+                        color: $color-0;
+                        text-align: center;
+                    }
+                }
+    
+                div.menu {
+                    &--options {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+
+                        button {
+                            background-color: $color-3;
+                            width: 100px;
+                            height: 35px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: $color-1;
+                            font-family: $font-2;
+                            text-transform: uppercase;
+                            border-radius: 10px;
+    
+                            cursor: pointer;
+                        }
+
+                        input {
+                            width: 250px;
+                            height: 40px;
+                            padding: 5px;
+                            background-color: $color-0;
+                            border: 10px;
+
+                            color: $color-1;
+                            font-size: 10px;
+                            font-family: $font-2;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

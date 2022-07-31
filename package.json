@@ -1,0 +1,40 @@
+{
+  "name": "game-star-wars-deep-web",
+  "version": "1.0.0",
+  "description": "Um jogo para praticar os conceitos de TypeScript, Sass e html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasdksan/game-star-wars-deep-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasdksan/game-star-wars-deep-web/issues"
+  },
+  "homepage": "https://github.com/lucasdksan/game-star-wars-deep-web#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@types/gulp": "^4.0.9",
+    "@types/gulp-rename": "^2.0.1",
+    "@types/gulp-uglify": "^3.0.7",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-webserver": "^0.9.1",
+    "node-sass": "^7.0.1",
+    "sass": "^1.54.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
