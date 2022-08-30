@@ -10,20 +10,24 @@ const sass = require('gulp-sass')(require('sass'));
 // const babel = require('gulp-babel');
 const webserver = require('gulp-webserver');
 
-function server(){
-    watch(['src/scripts/*.ts'], function(cb){
+function server() {
+    watch(['src/scripts/*.ts'], function (cb) {
         javaScriptFiles();
         cb();
     });
-    watch(['src/styles/*.scss'], function(cb){
+    watch(['src/scripts/*.js'], function (cb) {
+        javaScriptFiles();
+        cb();
+    });
+    watch(['src/styles/*.scss'], function (cb) {
         cssFiles();
         cb();
     });
-    watch(['src/templates/*.html'], function(cb){
+    watch(['src/templates/*.html'], function (cb) {
         htmlFiles();
         cb();
     });
-    watch(['src/images/*'], function(cb){
+    watch(['src/images/*'], function (cb) {
         imageFiles();
         cb();
     });
@@ -33,12 +37,12 @@ function server(){
             livereload: true,
             directoryListing: true,
             open: true
-          }));
+        }));
 }
 
 function imageFiles() {
-   return src('src/images/*')
-    .pipe(dest('dist/assets/images/'));
+    return src('src/images/*')
+        .pipe(dest('dist/assets/images/'));
 }
 
 function htmlFiles() {
@@ -54,6 +58,12 @@ function javaScriptFiles() {
         .pipe(dest('dist/assets/js/'));
 }
 
+function javaScriptFiles2() {
+    return src('src/scripts/*.js')
+        .pipe(rename({ extname: '.min.js' }))
+        .pipe(dest('dist/assets/js/'));
+}
+
 function cssFiles() {
     return src('src/styles/main.scss')
         .pipe(sass({
@@ -63,4 +73,4 @@ function cssFiles() {
         .pipe(dest('dist/assets/css/'));
 }
 
-exports.default = series(server, parallel(imageFiles, htmlFiles, javaScriptFiles, cssFiles));
+exports.default = series(server, parallel(imageFiles, htmlFiles, javaScriptFiles, cssFiles, javaScriptFiles2));

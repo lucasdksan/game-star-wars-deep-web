@@ -7,9 +7,9 @@ main {
     align-items: center;
     justify-content: center;
 
-    section{
+    section {
         &.menu {
-            &--area{
+            &--area {
                 width: 400px;
                 height: 500px;
                 display: flex;
@@ -23,13 +23,13 @@ main {
                 &.close {
                     display: none;
                 }
-    
+
                 div.menu--texts {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-    
+
                     h1 {
                         font-family: $font-1;
                         font-size: 24px;
@@ -38,7 +38,7 @@ main {
                         width: 350px;
                         text-align: center;
                     }
-        
+
                     span {
                         font-family: $font-2;
                         font-size: 14px;
@@ -46,7 +46,7 @@ main {
                         text-align: center;
                     }
                 }
-    
+
                 div.menu {
                     &--options {
                         width: 100%;
@@ -72,17 +72,17 @@ main {
                                 font-family: $font-2;
                                 text-transform: uppercase;
                                 border-radius: 10px;
-        
+
                                 cursor: pointer;
                             }
-    
+
                             input {
                                 width: 250px;
                                 height: 40px;
                                 padding: 5px;
                                 background-color: $color-0;
                                 border: 10px;
-    
+
                                 color: $color-1;
                                 font-size: 10px;
                                 font-family: $font-2;
@@ -98,8 +98,142 @@ main {
                                 text-transform: uppercase;
                                 margin-bottom: 10px;
                                 font-family: $font-2;
+
                                 &.active {
                                     display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    &--exist {
+                        display: flex;
+                        flex-direction: column;
+                        align-self: center;
+                        justify-content: center;
+
+                        &.close {
+                            display: none;
+                        }
+
+                        .exist {
+                            &--name {
+                                color: $color-1;
+                                font-size: 12px;
+                                font-family: $font-2;
+                                margin-bottom: 10px;
+                            }
+
+                            &--yes {
+                                height: 40px;
+                                width: 80px;
+                                background-color: $color-5;
+                                border-radius: 10px;
+
+                                color: $color-0;
+                                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                cursor: pointer;
+                            }
+
+                            &--no {
+                                height: 40px;
+                                width: 80px;
+                                background-color: $color-6;
+                                border-radius: 10px;
+
+                                color: $color-0;
+                                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .select-nave {
+                    width: 100%;
+                    padding: 0 20px;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .slick {
+                        &-list {
+                            max-width: 290px;
+
+                            .slick-track {
+                                .slick-slide {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+                            }
+                        }
+
+                        &-arrow {
+                            font-size: 0;
+                            background-color: $color-0;
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+
+                            &.slick-prev::after {
+                                content: "<";
+                                color: $color-1;
+                                font-size: 12px;
+                            }
+
+                            &.slick-next::after {
+                                content: ">";
+                                color: $color-1;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                    .container-card {
+                        display: flex !important;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        cursor: pointer;
+
+                        &--image {
+                            width: 150px;
+                            height: auto;
+                            object-fit: cover;
+                        }
+
+                        &--descripton {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            justify-content: center;
+                            margin-top: 10px;
+
+                            .nave {
+                                &-name {
+                                    color: $color-1;
+                                    font-size: 12px;
+                                    font-family: $font-2;
+                                    margin-bottom: 10px;
+                                }
+
+                                &-attk,
+                                &-speed,
+                                &-shield {
+                                    color: $color-0;
+                                    font-size: 9px;
+                                    font-family: $font-2;
+                                    margin-bottom: 10px;
                                 }
                             }
                         }
