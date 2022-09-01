@@ -1,0 +1,62 @@
+section.battle-field {
+    display: none;
+
+    &.active {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+
+        header {
+            height: 40px;
+            width: 100%;
+            
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 20px;
+
+            div {
+                &.left {
+                    span.life-pointer {
+                        font-family: $font-2;
+                        font-size: 14px;
+                        color: $color-0;
+                        text-align: center;
+                    }
+                }
+
+                &.right {
+                    span {
+                        font-family: $font-2;
+                        font-size: 14px;
+                        color: $color-0;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        main.game-area {
+            display: flex;
+            flex: 1;
+            width: 100vw;
+            height: 100vh;
+            flex-direction: column;
+
+            div {
+                &.nave{
+                    &--shield {
+
+                    }
+
+                    &--body {
+                        img {
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

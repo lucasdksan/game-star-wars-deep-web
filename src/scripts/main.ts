@@ -24,6 +24,77 @@ interface NaveProps {
 
 /* End - Types */
 
+/* Start - Global Variables */
+
+const containerNaves:NaveProps [] = [
+    {
+        name: 'Brave Delta',
+        image: 'assets/images/braveSpace-1.png',
+        life: 100,
+        attack: 15,
+        shield: 50,
+        combo: 0,
+        speed: 5
+    }
+    ,{
+        name: 'Brave Ares',
+        image: 'assets/images/braveSpace-2.png',
+        life: 100,
+        attack: 25,
+        shield: 20,
+        combo: 50,
+        speed: 3
+    },
+    {
+        name: 'Brave Kratos',
+        image: 'assets/images/braveSpace-3.png',
+        life: 100,
+        attack: 20,
+        shield: 25,
+        combo: 0,
+        speed: 4
+    }
+];
+
+/* End - Global Variables */
+
+/* Start - Include Nave */ 
+
+const IncludeNave = {
+    naveUserSelect: "",
+
+    start: function(nameNave: string){
+        this.naveUserSelect = nameNave;
+        
+        const naveSelect = containerNaves.find(e => e.name == nameNave) as NaveProps;
+        const bodyNave = `
+            <div class="nave--shield">
+                <div class="nave--body">
+                    <img src="${naveSelect.image}" />
+                </div>
+            </div>
+        `;
+
+        document.querySelector('.game-area')?.append(document.createRange().createContextualFragment(bodyNave));
+        
+    },
+
+    controlls: function(){
+
+    },
+
+    init: function(){
+        const nave = localStorage.getItem('@STDeepWeb-nave');
+
+        if(nave != null && nave != ''){
+            this.start(nave as string);
+            this.controlls();
+        }
+    }
+};
+
+/* End - Include Nave */ 
+
 /* Start - Nave Select */
 
 function SelectNaveUser(){
@@ -33,41 +104,14 @@ function SelectNaveUser(){
         localStorage.setItem('@STDeepWeb-nave', nameNave as string);
 
         $(".menu--area").hide();
+
+        $(".battle-field").addClass("active");
+        IncludeNave.init();
     });
 }
 
 const SelectNave = {
     start: function(){
-        const containerNaves:NaveProps [] = [
-            {
-                name: 'Brave Delta',
-                image: 'assets/images/braveSpace-1.png',
-                life: 100,
-                attack: 15,
-                shield: 50,
-                combo: 0,
-                speed: 5
-            }
-            ,{
-                name: 'Brave Ares',
-                image: 'assets/images/braveSpace-2.png',
-                life: 100,
-                attack: 25,
-                shield: 20,
-                combo: 50,
-                speed: 3
-            },
-            {
-                name: 'Brave Kratos',
-                image: 'assets/images/braveSpace-3.png',
-                life: 100,
-                attack: 20,
-                shield: 25,
-                combo: 0,
-                speed: 4
-            }
-        ];
-
         containerNaves.map((element)=>{
             let container = `
                 <div class="container-card" data-name-nave="${element.name}">
@@ -137,10 +181,14 @@ const LandingPage = {
         const objectUser:UserProps = JSON.parse(user as string);
 
         console.log(user)
-        console.log(objectUser.name)
+        console.log(objectUser)
 
-        if(objectUser.name !== ''){
-            this.exist(objectUser);
+        if(user != null && objectUser != null){
+            if(objectUser.name !== ''){
+                this.exist(objectUser);
+            } else if(user != null){
+                this.start();
+            }
         } else {
             this.start();
         }
