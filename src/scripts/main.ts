@@ -94,11 +94,50 @@ const IncludeNave = {
             });
         }
 
+        function activeShield(){
+            $(".nave--shield").addClass("activeShield");
+
+            setTimeout(()=>{
+                $(".nave--shield").removeClass("activeShield");
+            },3000);
+        }
+
+        function dashMoveL(){
+            if(
+                leftRef > 100 && leftRef < Number($("main.game-area").width()) - Number($(".nave--shield").width()) -100
+            ){
+                $(".nave--shield").css("left", leftRef + 100);
+                leftRef = leftRef + 100;
+            }
+        }
+
+        function dashMoveR(){
+            if(
+                leftRef > 100 && leftRef < Number($("main.game-area").width()) - Number($(".nave--shield").width()) -100
+            ) {
+                $(".nave--shield").css("left", leftRef - 100);
+                leftRef = leftRef - 100;
+            }
+        }
+
         function positionNave(t: number, l:number){
             if(
                 t > 0 && t < Number($("main.game-area").height()) - Number($(".nave--shield").height()) &&
-                l > 0 && l < Number($("main.game-area").width()) - Number($(".nave--shield").width())
+                l > 0 && l < Number($("main.game-area").width()) - Number($(".nave--shield").width()) &&
+                !$(".nave--shield").hasClass("activeShield")
             ){
+                $(".nave--shield").css({
+                    left: l,
+                    top: t
+                });
+    
+                topRef = t;
+                leftRef = l;
+            } else if(
+                t > 0 && t < Number($("main.game-area").height()) - Number($(".nave--shield").height()) - 55 &&
+                l > 0 && l < Number($("main.game-area").width()) - Number($(".nave--shield").width()) - 55 &&
+                $(".nave--shield").hasClass("activeShield")
+            ) {
                 $(".nave--shield").css({
                     left: l,
                     top: t
@@ -108,37 +147,6 @@ const IncludeNave = {
                 leftRef = l;
             }
         }
-
-        $(window).keypress((e) => {
-            switch (e.key) {
-                case "A":
-                    positionNave(topRef, (leftRef - speed));
-                    break;
-                case "D":
-                    positionNave(topRef, (leftRef + speed));
-                    break;
-                case "S":
-                    positionNave((topRef + speed), leftRef);
-                    break;
-                case "W":
-                    positionNave((topRef - speed), leftRef);
-                    break;
-                case "a":
-                    positionNave(topRef, (leftRef - speed));
-                    break;
-                case "s":
-                    positionNave((topRef + speed), leftRef);
-                    break;
-                case "d":
-                    positionNave(topRef, (leftRef + speed));
-                    break;
-                case "w":
-                    positionNave((topRef - speed), leftRef);
-                    break;
-
-            }
-
-        });
 
         $(window).keydown((e) => {
             switch (e.key) {
@@ -154,36 +162,11 @@ const IncludeNave = {
                 case "W":
                     positionNave((topRef - speed), leftRef);
                     break;
-                case "a":
-                    positionNave(topRef, (leftRef - speed));
+                case "E":
+                    dashMoveL();
                     break;
-                case "s":
-                    positionNave((topRef + speed), leftRef);
-                    break;
-                case "d":
-                    positionNave(topRef, (leftRef + speed));
-                    break;
-                case "w":
-                    positionNave((topRef - speed), leftRef);
-                    break;
-
-            }
-
-        });
-
-        $(window).keyup((e) => {
-            switch (e.key) {
-                case "A":
-                    positionNave(topRef, (leftRef - speed));
-                    break;
-                case "D":
-                    positionNave(topRef, (leftRef + speed));
-                    break;
-                case "S":
-                    positionNave((topRef + speed), leftRef);
-                    break;
-                case "W":
-                    positionNave((topRef - speed), leftRef);
+                case "Q":
+                    dashMoveR();
                     break;
                 case "a":
                     positionNave(topRef, (leftRef - speed));
@@ -197,7 +180,15 @@ const IncludeNave = {
                 case "w":
                     positionNave((topRef - speed), leftRef);
                     break;
-
+                case "e":
+                    dashMoveL();
+                    break;
+                case "q":
+                    dashMoveR();
+                    break;
+                case " ":
+                    activeShield();
+                    break;
             }
 
         });
